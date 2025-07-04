@@ -6,6 +6,20 @@
 
 </div>
 
+
+> [!NOTE]
+> I am going through a 
+> major rewrite of
+> the [original plugin](Myzel394/easytables.nvim).
+>
+>
+> Still a major work in progress!
+> Thank you for Myzel394 for
+> creating this plugin!
+> I really like the interface
+> (and want to enhance the codebase
+> and overall ergonomics).
+
 [Preview of usage of easytables](https://github.com/Myzel394/easytables.nvim/assets/50424412/d8bcb0c2-9b8b-468a-b1a8-f0032543f1e9)
 
 **Please note that this is a work in progress.**
@@ -21,11 +35,19 @@
 
 ### Installation
 
-Using [packer](https://github.com/wbthomason/packer.nvim):
-
+- (Recommended) Using lazy.nvim:
 ```lua
-use "Myzel394/easytables.nvim"
+return { {
+	"oscar-benderstone/easytables.nvim",
+	config = function()
+		require("easytables").setup()
+	end,
+} }
 ```
+- Using [packer](https://github.com/wbthomason/packer.nvim):
+  ```lua
+  use("oscar-benderstone/easytables.nvim")
+  ```
 
 ### Tutorial
 
@@ -51,9 +73,9 @@ Go to your table (doesn't matter where, can be at a border or inside a cell) and
 `after/plugin/easytables.lua`
 
 ```lua
-require("easytables").setup {
-  -- Your configuration comes here
-}
+require("easytables").setup({
+	-- Your configuration comes here
+})
 ```
 
 #### Default configuration
