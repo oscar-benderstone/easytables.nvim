@@ -1,7 +1,13 @@
+local window = require("easytables.window")
+
 local M = {}
 
 function M.new()
-	return vim.notify("Unimplemented!", vim.log.levels.ERROR, { title = "easytables.nvim" })
+	-- Draw a window at the cursor's position.
+	-- Make 1x1 the default
+	-- (unless configured differently).
+	-- TODO: implement wrapping?
+	-- See: https://github.com/andrewferrier/wrapping.nvim
 end
 
 function M.export() end
