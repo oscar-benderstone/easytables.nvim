@@ -39,9 +39,7 @@
 ```lua
 return { {
 	"oscar-benderstone/easytables.nvim",
-	config = function()
-		require("easytables").setup()
-	end,
+	opts = {},
 } }
 ```
 - Using [packer](https://github.com/wbthomason/packer.nvim):
