@@ -7,7 +7,7 @@ function M:create(my_table, options)
 	options = options or {}
 
 	self.table = my_table
-	self.preview = vim.api.nvim_get_current_win()
+	self.previous = vim.api.nvim_get_current_win()
 
 	-- self.on_export = function()
 	-- 	local new_table = export:export_table(markdown_table)
@@ -23,10 +23,35 @@ function M:create(my_table, options)
 end
 
 function M:show()
-	-- Don't open window again if it's already opened
-	if self.previous_window then
+	print("WORKING")
+
+	-- Don't open window again
+	-- if it's already open
+	if self.preview_window then
 		return
 	end
+
+	self.preview_buffer = vim.api.nvim_create_buf(false, true)
+	self.preview_window = vim.api.nvim_open_win(self.preview_buffer, false, {
+		style = "minimal",
+		border = "rounded",
+		-- title = o.options.table.window.preview_title,
+		title = "EasyTables",
+		title_pos = "center",
+		focusable = false,
+		-- Required for function, will be overwritten by :_set_window_positions`
+		relative = "editor",
+		row = 0,
+		col = 0,
+		width = 1,
+		height = 1,
+	})
+
+	-- vim.api.nvim_set_option_value("buftype", "nofile", { buf = self.preview_buffer })
+
+	-- Disable default highlight
+	-- vim.api.nvim_set_option_value("winhighlight", "Normal:Normal", { win = self.preview_window })
+	-- vim.api.nvim_set_option_value("wrap", false, { win = self.preview_window })
 end
 
 return M

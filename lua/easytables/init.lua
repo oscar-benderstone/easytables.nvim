@@ -1,6 +1,6 @@
-local window = require("easytables.window")
-
 local M = {}
+
+local window = require("window")
 
 function M.new()
 	-- Draw a window at the cursor's position.
@@ -8,6 +8,9 @@ function M.new()
 	-- (unless configured differently).
 	-- TODO: implement wrapping?
 	-- See: https://github.com/andrewferrier/wrapping.nvim
+
+	window:create({}, {})
+	window:show()
 end
 
 function M.export() end
@@ -20,5 +23,8 @@ function M.import() end
 function M.setup(options)
 	options = options or {}
 end
+
+print("TEST")
+M.new()
 
 return M
